@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Marcellus&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <title> Lacta x Voluspa</title>
+</head>
+
+<body>
+    <!-- ====== CABEÇALHO ====== -->
+    <header>
+  <img class="Logotipo" src="assets/logo.png" alt="Logotipo do Site">
+  <nav>
+    <ul>
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#quemsomos">Quem Somos</a></li>
+      <li><a href="#produtos">Produtos</a></li>
+      <li><a href="#carrinho" id="botao-carrinho">🛒 Carrinho (<span id="quantidade-carrinho">0</span>)</a></li>
+    </ul>
+  </nav>
+</header>
+    
+    <!-- seção 1-->
+    <section class="secao1" id="inicio">
+        <h2> Lacta & Voluspa</h2>
+
+        <div class="velas">
+            <!-- titulo prinicipal centralizado-->
+            <h4>Velas Aromáticas</h4>
+
+
+            <!-- textos explicativos logo abaixo-->
+            <h3>Velas Aromáticas artesanais que transformam ambientes</h3>
+            <p> Feitas com cera natural e óleos essenciais puros para criar</p>
+            <p>momentos de bem-estar</p>
+
+            <!-- Botões que redirecionam para outras seções da página -->
+            <div class="botoes">
+                <a href="#produtos" class="botao">Ver Coleções</a>
+                <a href="#aromas" class="botao">Nossos Aromas</a>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <!-- Seção 2-->
+    <section class="produtos" id="produtos">
+  <h2>Nossa Coleção</h2>
+  <div class="divCards">
+    <div class="card">
+      <img src="assets/chocolate.jpg" alt="">
+      <h4>Chocolate / Diamante Negro</h4>
+      <p>Relaxamento profundo com notas de chocolate</p>
+      <p class="preco">R$ 39,90</p>
+      <button class="add-carrinho" data-nome="Chocolate" data-preco="39.90">Adicionar ao Carrinho</button>
+    </div>
+
+    <div class="card">
+      <img src="assets/Ouro branco.jpg" alt="">
+      <h4>Ouro Branco</h4>
+      <p>Energia revigorante com toques doces</p>
+      <p class="preco">R$ 42,90</p>
+      <button class="add-carrinho" data-nome="Ouro Branco" data-preco="42.90">Adicionar ao Carrinho</button>
+    </div>
+
+    <div class="card">
+      <img src="assets/Morango.png" alt="">
+      <h4>Morango</h4>
+      <p>Perfume leve e sensação de spa em casa</p>
+      <p class="preco">R$ 34,90</p>
+      <button class="add-carrinho" data-nome="Morango" data-preco="34.90">Adicionar ao Carrinho</button>
+    </div>
+  </div>
+<!-- ====== SEÇÃO SERVIÇOS ====== -->
+    <section class="servicos" id="servicos">
+        <h2>Serviços</h2>
+        <p>
+            Trabalhamos com <strong>velas aromáticas artesanais</strong>, desde a criação
+            até a produção completa. Oferecemos personalização de fragrâncias, design de embalagens
+            e consultoria para marcas que desejam lançar suas próprias linhas de velas.
+        </p>
+    </section>
+
+
+    <!-- ====== SEÇÃO QUEM SOMOS ====== -->
+    <section class="quemsomos" id="quemsomos">
+        <h2>Quem Somos</h2>
+        <p>
+            A <strong>Lacta & Voluspa</strong> nasceu da paixão por bem-estar e aromas únicos.
+            Unimos o cuidado artesanal com a pureza dos óleos essenciais para criar experiências
+            sensoriais que acolhem, inspiram e transformam o ambiente.
+        </p>
+    </section>
+
+
+  <section class="carrinho" id="carrinho">
+  <h2>🛒 Seu Carrinho</h2>
+  <div id="itens-carrinho"></div>
+  <h3>Total: R$ <span id="total-carrinho">0.00</span></h3>
+  <a href="finalizacao.html" class="botao-finalizar">Finalizar Compra</a>
+</section>
+<script>
+// Lista dos itens do carrinho
+let carrinho = [];
+
+// Função para atualizar o carrinho na tela
+function atualizarCarrinho() {
+  const container = document.getElementById("itens-carrinho");
+  const totalEl = document.getElementById("total-carrinho");
+  const quantidadeEl = document.getElementById("quantidade-carrinho");
+
+  container.innerHTML = "";
+  let total = 0;
+
+  carrinho.forEach((item, index) => {
+    total += item.preco * item.qtd;
+    const div = document.createElement("div");
+    div.classList.add("item-carrinho");
+    div.innerHTML = `
+      <p><strong>${item.nome}</strong> - R$ ${item.preco.toFixed(2)} x ${item.qtd}</p>
+      <button onclick="removerItem(${index})">Remover</button>
+    `;
+    container.appendChild(div);
+  });
+
+  totalEl.textContent = total.toFixed(2);
+  quantidadeEl.textContent = carrinho.length;
+}
+
+// Função para adicionar ao carrinho
+document.querySelectorAll(".add-carrinho").forEach(botao => {
+  botao.addEventListener("click", () => {
+    const nome = botao.getAttribute("data-nome");
+    const preco = parseFloat(botao.getAttribute("data-preco"));
+
+    // Verifica se já existe o item no carrinho
+    const existente = carrinho.find(i => i.nome === nome);
+    if (existente) {
+      existente.qtd++;
+    } else {
+      carrinho.push({ nome, preco, qtd: 1 });
+    }
+    atualizarCarrinho();
+  });
+});
+
+// Função para remover item
+function removerItem(index) {
+  carrinho.splice(index, 1);
+  atualizarCarrinho();
+}
+</script>
+
+
+</section>
+
+        <!-- Seção 3-->
+        <section class="secao3">
+            <h2> Por que Escolher Nossas Velas? </h2>
+            <p class="subtitulo"> qualidade, pureza e cuidado em cada detalhe</p>
+            <div class="botoes">
+                <div class="item">
+                    <img src="assets/botao ecologico.png" alt="">
+                    <p>
+                    <h3>100% natural</h3>
+                    </p>
+                    <p>feitas com cera de soja e óleos essenciais puros, sem parafina ou produtos quimicos</p>
+                </div>
+                <!-- GRADE DE  2x2-->
+                <div class="item">
+                    <img src="assets/Bem-estar.png" alt="">
+                    <p>
+                    <h3> Bem-Estar</h3>
+                    </p>
+                    <p>aromaterapia que promove relaxamento, foco e equilibrio</p>
+                    <p>emocional</p>
+                </div>
+
+                <div class="item">
+                    <img src="assets/Artesanal.png" alt="">
+                    <p>
+                    <h3>Artesanal</h3>
+                    </p>
+                    <p>Cada vela é feita à mão com atenção aos detalhes e amor pelo ofício</p>
+                </div>
+
+                <div class="item">
+                    <img src="assets/longa duração.png" alt="">
+                    <p>
+                    <h3>Longa Duração</h3>
+                    </p>
+                    <p>até 50 horas de queima limpa e pergumação cosntante</p>
+                </div>
+
+
+
+            </div>
+        </section>
+    </section>
+
+    </section>
+
+    <!-- ====== RODAPÉ ====== -->
+<footer class="rodape">
+  <div class="rodape-conteudo">
+    <!-- Coluna 1: Descrição da marca -->
+    <div class="sobre">
+      <h3>Lacta & Voluspa</h3>
+      <p>
+        Velas aromáticas artesanais que transformam ambientes <br>
+        e promovem bem-estar através da aromaterapia natural.
+      </p>
+    </div>
+
+    <!-- Coluna 2: Contato -->
+    <div class="contato">
+      <h3>Contato</h3>
+      <p>📧 contato@essencianatural.com.br</p>
+      <p>📞 (11) 9999-9999</p>
+    </div>
+  </div>
+
+  <!-- Linha final de direitos autorais -->
+  <div class="copy">
+    <p>© 2025 Lacta & Voluspa — Todos os direitos reservados.</p>
+    <p> projeto estudantil, conclusão e curso</p>
+  </div>
+</footer>
+
+</body>
+
+</html>

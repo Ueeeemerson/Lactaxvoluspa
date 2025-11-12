@@ -1,0 +1,442 @@
+*{
+padding: 0;
+margin: 0;
+box-sizing:  border-box;
+
+}
+
+body {
+    background-color: #bad1db;
+    color: rgba(243, 243, 245, 0.959);
+    font-family: "Marcellus";
+}
+
+header{
+    display: flex;
+  justify-content: space-between; /* logo à esquerda, menu à direita */
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #faf7fa; /* tom suave rosa claro */
+  position: sticky; /* fixa no topo ao rolar a página */
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+   ul { 
+        display: flex;
+        gap: 50px;
+        list-style-type: none;
+        background-color: rgb(10, 4, 68);
+        padding: 25px 30px;
+        border-radius: 45px;
+        backdrop-filter: blur(55px);
+   }
+}
+.Logotipo {
+
+    width: 100px;
+}
+
+/* ====== MENU ====== */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 40px; /* espaçamento entre os itens */
+  margin: 0;
+}
+nav a {
+  text-decoration: none;
+  color: #ece9eb;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #5c0c37;
+}
+
+/* ====== SEÇÕES ====== */
+section {
+  padding: 80px 20px;
+  text-align: center;
+  font-family: "Marcellus", sans-serif;
+}
+
+.servicos, .quemsomos {
+  background: linear-gradient(135deg, #fff8fb, #fff); /* leve degradê de fundo */
+  color: #050c4e;
+  padding: 80px 15%;
+  text-align: center;
+  line-height: 1.8; /* espaçamento entre linhas */
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  margin: 50px auto;
+  max-width: 900px; /* limita a largura do texto */
+  font-family: "Poppins", sans-serif;
+}
+
+.servicos h2, .quemsomos h2 {
+  color: #4022e9;
+  font-size: 2em;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+section{
+
+        width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+/*secao principal*/
+.secao1 {
+  background: url("assets/vela\ para\ pagina\ principal.jpg") no-repeat center center; /* imagem centralizada */
+  background-attachment: fixed;
+  background-size: cover; /* cobre toda a área */
+  text-align: center;
+  padding: 80px 20px;
+  font-family: "Marcellus", sans-serif;
+  color: #ffffff; /* deixa o texto branco para contraste */
+
+   
+}
+/* Subtítulo Lacta & Voluspa */
+.secao1 h2 {
+  color: #eff0f1cc;
+  font-size: 5em;
+  margin-bottom: 20px;
+}
+
+.velas{
+
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+ h4{
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #fcfdfdf6;
+ }
+}
+/* Texto logo abaixo do título */
+.velas h3 {
+  font-size: 2em;
+  color: #fafafab6;
+  margin-bottom: 10px;
+}
+.velas p {
+  color: #0577f8;
+  font-size: 2em;
+  margin: 5px 0;
+}
+/* Container dos botões */
+.botoes {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* espaço entre os botões */
+}
+/* Estilo dos botões */
+.botao {
+  background-color: #1139b3;
+  color: rgb(247, 247, 247);
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+/* Efeito de hover nos botões */
+.botao:hover {
+  background-color: #854318af;
+  transform: scale(1.05);
+}
+/* Ajuste para celular */
+@media (max-width: 600px) {
+  .botoes {
+    flex-direction: column;
+  }
+
+  .botao {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+
+.produtos{
+    background-color: #fff5f8; /* rosa claro de fundo */
+     text-align: center;
+    padding: 60px 20px;
+    font-family: "Poppins", sans-serif;
+
+}
+
+.produto h2 {
+    font-size: 10em;
+    color: #5508e4; /*rosa mais escuro*/
+    margin-bottom:  40px;
+
+}
+/*container que segura todos os cards (usa flex para alinha-los lado a lado )*/
+.divCards {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 30px;
+
+}
+/* cada card individual (imagem + texto +preco + botão)*/
+.card {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 450px; /* tamanho fixo proporcional */
+    padding: 25px;
+    display: flex;
+    flex-direction: column; /* elementos em coluna */
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Efeito ao passar o mouse (hover) */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Imagem do produto */
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; /* corta a imagem proporcionalmente */
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+/* Nome do produto */
+.card h4 {
+  color: #2d2aca;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+}
+
+/* Descrição curta do produto */
+.card p {
+  font-size: 0.95em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Valor do produto */
+.preco {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.5em;
+}
+/* Botão de compra */
+.comprar {
+  background-color: #1e10e0;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-size: 0.95em;
+  transition: background-color 0.3s;
+}
+
+/* Efeito no botão ao passar o mouse */
+.comprar:hover {
+  background-color: #15aeddef;
+}
+@media (max-width: 700px) {
+  .divCards {
+    flex-direction: column; /* empilha os cards */
+    align-items: center;
+  }
+}
+
+.secao3{
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff5f8; /* tom de rosa claro */
+    font-family: "Poppins", sans-serif;
+}
+
+.secao3 h2 {  
+    font-size: 3em;
+    color: #0a075c;
+    margin-bottom: 10px;
+    font-family: "Marcellus";
+
+}
+.secao3 .subtitulo{
+    color:#555;
+    margin-bottom: 40px;
+    font-size: 2em;
+    font-family: "Marcellus";
+}
+
+.botoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    grid-gap: 40px 60px; /* espaçamento entre linhas e colunas */
+    gap: 20px; /*diminui o espaco entre eles*/
+    justify-items: center; /* centraliza os blocos */
+    margin-top: 25px;
+    padding: 14px;
+}
+/* Botões base */
+.botoes .botao {
+  background-color: #0b065a; /* cor de fundo */
+  color: white;
+  text-decoration: none;
+  padding: 14px 40px; /* aumenta o tamanho — formato mais retangular */
+  border-radius: 10px; /* cantos suavemente arredondados */
+  font-size: 1em;
+  font-weight: 500;
+  transition: all 0.3s ease; /* animação suave */
+  border: 2px solid transparent; /* borda invisível (para evitar movimento ao hover) */
+}
+/* Efeito ao passar o mouse */
+.botoes .botao:hover {
+  background-color: #fff;          /* muda o fundo */
+  color: #d46a9e;                  /* muda a cor do texto */
+  border: 2px solid #d46a9e;       /* borda (quadro) aparece */
+  box-shadow: 0 4px 10px rgba(212, 106, 158, 0.3); /* leve sombra rosa */
+  transform: scale(1.05);          /* cresce levemente */
+}
+
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 25px;
+  width: 240px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.item img {
+  width: 70px;
+  margin-bottom: 10px;
+}
+
+.item h3 {
+  color: #d46a9e;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.item p {
+  color: #666;
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+@media (max-width: 700px) {
+  .botoes {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/*carrinho*/
+.carrinho {
+  background: #020341;
+  padding: 50px 20px;
+  text-align: center;
+  border-top: 2px solid #45a7c0;
+}
+
+.item-carrinho {
+  background: #ffeaf2;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px auto;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.botao-finalizar {
+  display: inline-block;
+  background: #057ef0;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.botao-finalizar:hover {
+  background: #b55588;
+}
+
+
+/* ====== ESTILO DO RODAPÉ ====== */
+.rodape {
+  background: linear-gradient(135deg, #110449, #692709); /* fundo principal */
+  color: #444;
+  font-family: "Marcellus", sans-serif;
+  padding: 80px 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Caixa arredondada interna */
+.rodape-conteudo {
+  background: rgba(255, 255, 255, 0.8); /* leve transparência branca */
+  border-radius: 25px; /* cantos arredondados */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* sombra suave */
+  padding: 40px 60px;
+  width: 100%;
+  max-width: 900px; /* limita o tamanho no centro */
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  backdrop-filter: blur(8px); /* efeito “vidro fosco” (opcional e lindo) */
+}
+
+/* Títulos */
+.rodape h3 {
+  color: #04043b;
+  margin-bottom: 15px;
+}
+
+/* Texto */
+.rodape p {
+  margin: 5px 0;
+  line-height: 1.6;
+  color: #050505dc;
+}
+
+/* Linha de direitos autorais */
+.copy {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #cae5e9;
+  padding-top: 15px;
+  font-size: 0.9em;
+  color: #777;
+  width: 100%;
+  max-width: 900px;
+}
